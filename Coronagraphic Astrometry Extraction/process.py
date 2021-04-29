@@ -11,14 +11,19 @@ import pdb
 import scipy.optimize as optimize
 from matplotlib import pyplot as plt
 
-## UNCOMMENT THIS IF USING STUFF FROM POST 2015
+########## DISTORTION SOLUTIONS FOR KECK/NIRC2 ##################
+
+# These solutions were obtained here: https://github.com/jluastro/nirc2_distortion/wiki
+
+## UNCOMMENT THIS IF USING IMAGES FROM AFTER 2015
 distXgeoim='./distortion/post2015_distort_X.fits'
 distYgeoim='./distortion/post2015_distort_Y.fits'
 
-## UNCOMMENT THIS IF USING STUFF FROM PRE 2015
+## UNCOMMENT THIS IF USING IMAGES FROM BEFORE  2015
 
 # distXgeoim='./distortion/pre2015_distort_X.fits'
 # distYgeoim='./distortion/pre2015_distort_Y.fits'
+
 
 def undistort(in_frame, save=False, out=''):
     """
@@ -294,44 +299,8 @@ def plot_cost(cf):
 
 if __name__ == "__main__":
 
-    # fnums=[i+1 for i in range(150)]
-
-    # # #get rid of sus frames
-    # # sus_frames=[68,69,70,71,72,251,252,253]
-    # # for frame in sus_frames:
-    # #     fnums.remove(frame)
-    
-    # # create list of the corresponding file names
-    # imgs=[f'04-19-2013/undistorted/{i}.fits' for i in fnums]
-    # # guess position of the secondary for each frame
-    # positions,gauss_centres=find_secondary(imgs)
-    # for i in range(len(fnums)):
-    #     print(f'Guess: {positions[i]}')
-    #     print(f'Gauss: {gauss_centres[i]}')
-    #     print()
-    # print(gauss_centres-positions)
-    # gauss_centres[np.where(np.linalg.norm(gauss_centres-positions,axis=1)>=np.sqrt(10))]=0
-    # print(gauss_centres)
-
-    # fname='03-20-2016/undistorted/7.fits'
-    # img=fits.getdata(fname,ignore_missing_end=True)
-    # print(img[1,62],img[62,1])
-    # print(find_brightest(img))
-    # (sep_info),(ang_info)=calc()
-    # print(sep_info)
-    # print(ang_info)
-
-
     res=calc()
     pdb.set_trace()
-
-    # img=fits.getdata('03-20-2016/undistorted/2.fits')
-    # dark=fits.getdata('mean_dark.fits')
-    # res=scipy.ndimage.median_filter(img-dark,size=5)
-    # hdu = fits.PrimaryHDU()
-    # hdu.data = res
-    # savename='filtered.fits'
-    # hdu.writeto(savename, overwrite=True)
 
 
 
