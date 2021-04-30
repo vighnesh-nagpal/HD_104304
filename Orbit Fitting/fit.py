@@ -7,7 +7,7 @@ import os
 def main():
 	#parameters for the system 
 	num_planets=1
-	data_table = read_input.read_file('data.csv')
+	data_table = read_input.read_file('../Data/data.csv')
 	m0 = 1.01
 	mass_err = 0.05
 	plx=78.33591471044681
@@ -38,10 +38,9 @@ def main():
 	myResults=mcmc_sampler.results
 	try:
 		### CHANGE THIS TO SAVE TO YOUR DESIRED DIRECTORY ##
-		save_path = '/data/user/vnagpal/new_104304'
 		filename  = 'floatplx.hdf5'
-		hdf5_filename=os.path.join(save_path,filename)
-		myResults.save_results(hdf5_filename)  # saves results object as an hdf5 file
+# 		hdf5_filename=os.path.join(save_path,filename)
+		myResults.save_results(filename)  # saves results object as an hdf5 file
 	except:
 		print("Something went wrong while saving the results")
 	finally:      
